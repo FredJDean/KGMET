@@ -18,14 +18,14 @@
 - dgl==1.1.2+cu118
 - dglgo==0.0.2
 ## Quick Start
-### An example for editing Llama3 (8B) on counterfact dataset using NSE
+### An example for editing Llama3 (8B) on counterfact dataset using KGMET
 #### 1. Edit Llama3 (8B) model 
  
     python3 -m experiments.evaluate     --alg_name=KGMET     --model_name=meta-llama/Meta-Llama-3-8B-Instruct     --hparams_fname=Llama3-8B.json --ds_name=mcf   --num_edits=1000 --downstream_eval_steps=5
 
 This command runs an evaluation script for the NSE algorithm using the Llama3-8b-instruct. Below are the explanations for each argument:
 
-- `--alg_name=NSE`: Specifies the name of the algorithm being used, which is NSE in this case.
+- `--alg_name=NSE`: Specifies the name of the algorithm being used, which is KGMET in this case.
 - `--model_name=meta-llama/Meta-Llama-3-8B-Instruct`: Indicates the name of the model being evaluated, here it is Llama-3-8B-Instruct.
 - `--hparams_fname=Llama3-8B.json`: Points to the JSON file containing hyperparameters specific to the Llama-3-8B-Instruct model.
 - `--ds_name=mcf`: Specifies the dataset name, in this case, "mcf".
