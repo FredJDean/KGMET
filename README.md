@@ -25,7 +25,7 @@
 
 This command runs an evaluation script for the NSE algorithm using the Llama3-8b-instruct. Below are the explanations for each argument:
 
-- `--alg_name=NSE`: Specifies the name of the algorithm being used, which is KGMET in this case.
+- `--alg_name=KGMET`: Specifies the name of the algorithm being used, which is KGMET in this case.
 - `--model_name=meta-llama/Meta-Llama-3-8B-Instruct`: Indicates the name of the model being evaluated, here it is Llama-3-8B-Instruct.
 - `--hparams_fname=Llama3-8B.json`: Points to the JSON file containing hyperparameters specific to the Llama-3-8B-Instruct model.
 - `--ds_name=mcf`: Specifies the dataset name, in this case, "mcf".
