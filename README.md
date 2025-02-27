@@ -1,8 +1,5 @@
-![Uploading image.png…]()
-
 # KGMET
 - Code for [``Knowledge Graph-Driven Memory Editing with Directional Interventions``]
-- 
 ![image](https://github.com/user-attachments/assets/3f4ad5d0-d146-4dd3-88e3-3dd041b65c86)
 The framework of KGMET. KGMET incorporates directional **Knowledge Graph** intervention and **Orthogonal constraint**, enabling the model to effectively improve **multi-hop reasoning** in large-scale editing scenarios, with maximally **locked down irrelevant knowledge**.
 
