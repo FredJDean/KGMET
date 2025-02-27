@@ -29,8 +29,8 @@ from memit.compute_z import get_module_input_output_at_words, compute_z
 from memit.memit_main import apply_memit_to_model, get_context_templates
 from memit.memit_seq_main import apply_memit_seq_to_model
 from memit.memit_rect_main import apply_memit_rect_to_model
-from AlphaEdit import AlphaEditHyperParams, GNN
-from AlphaEdit.AlphaEdit_main import apply_AlphaEdit_to_model, get_cov
+from KGMET import KGMETHyperParams, GNN
+from KGMET.KGMET_main import apply_KGMET_to_model, get_cov
 from rome import ROMEHyperParams, apply_rome_to_model
 from util import nethook
 from util.globals import *
@@ -38,7 +38,7 @@ from nse import NSEHyperParams
 from nse.nse_main import apply_nse_to_model
 from glue_eval.glue_eval import GLUEEval
 ALG_DICT = {
-    "AlphaEdit": (AlphaEditHyperParams, apply_AlphaEdit_to_model),
+    "KGMET": (KGMETHyperParams, apply_KGMET_to_model),
     "MEMIT_seq": (MEMITHyperParams, apply_memit_seq_to_model),
     "MEMIT_prune": (MEMITHyperParams, apply_memit_to_model),
     "MEMIT_rect": (MEMITHyperParams, apply_memit_rect_to_model),
@@ -141,7 +141,7 @@ def main(
     # Get cache templates
     cache_template = None
     if use_cache:
-        if any(alg in alg_name for alg in ["MEMIT","AlphaEdit", "MEMIT_seq", "MEMIT_prune", "MEMIT_rect"]):
+        if any(alg in alg_name for alg in ["MEMIT","KGMET", "MEMIT_seq", "MEMIT_prune", "MEMIT_rect"]):
             cache_template = (
                 KV_DIR
                 / f"{model_name.replace('/', '_')}_MEMIT"
@@ -197,19 +197,19 @@ def main(
                         },
                     )
                     print(f"Cached k/v pair at {cache_fname}")
-    if any(alg in alg_name for alg in ["AlphaEdit", "MEMIT_seq", "MEMIT_prune", "NSE"]):
+    if any(alg in alg_name for alg in ["KGMET", "MEMIT_seq", "MEMIT_prune", "NSE"]):
         # Iterate through dataset
         W_out = nethook.get_parameter(model, f"{hparams.rewrite_module_tmp.format(hparams.layers[-1])}.weight")
         if hparams.model_name == "gpt2-xl":
             cache_c = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
-            if alg_name == "AlphaEdit":
+            if alg_name == "KGMET":
                 P = torch.zeros((len(hparams.layers), W_out.shape[0], W_out.shape[0]), device="cpu")
         elif hparams.model_name in ["EleutherAI_gpt-j-6B","Llama3-8B"]:
             cache_c = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
-            if alg_name == "AlphaEdit":
+            if alg_name == "KGMET":
                 P = torch.zeros((len(hparams.layers), W_out.shape[1], W_out.shape[1]), device="cpu")
         del W_out
-    if alg_name == "AlphaEdit":
+    if alg_name == "KGMET":
         n_embed = model.config.n_embd if hasattr(model.config, "n_embed") else model.config.hidden_size
         print("Initializing RGCN")
         gnn_model = GNN(
@@ -273,9 +273,9 @@ def main(
             if conserve_memory
             else dict()
         )
-        etc_args = dict(cache_template=cache_template) if any(alg in alg_name for alg in ["ROME", "MEMIT","AlphaEdit", "MEMIT_seq", "MEMIT_prune", "NSE"]) else dict()
-        seq_args = dict(cache_c=cache_c) if any(alg in alg_name for alg in ["AlphaEdit", "MEMIT_seq", "NSE"]) else dict()
-        nc_args = dict(P = P) if any(alg in alg_name for alg in ["AlphaEdit"]) else dict()
+        etc_args = dict(cache_template=cache_template) if any(alg in alg_name for alg in ["ROME", "MEMIT","KGMET", "MEMIT_seq", "MEMIT_prune", "NSE"]) else dict()
+        seq_args = dict(cache_c=cache_c) if any(alg in alg_name for alg in ["KGMET", "MEMIT_seq", "NSE"]) else dict()
+        nc_args = dict(P = P) if any(alg in alg_name for alg in ["KGMET"]) else dict()
         #if cnt == 0 and args.downstream_eval_steps > 0:#do initial GLUE EVAL WITH ORIGINAL MODEL
         #    glue_results = {'edit_num': -1}
 
@@ -295,9 +295,9 @@ def main(
             graph_input=graph_input,
             gnn_model=gnn_model
         ) if any(
-            alg in alg_name for alg in ["AlphaEdit"]) else dict()
+            alg in alg_name for alg in ["KGMET"]) else dict()
         start = time()
-        if any(alg in alg_name for alg in ["AlphaEdit", "MEMIT_seq", "NSE"]):
+        if any(alg in alg_name for alg in ["KGMET", "MEMIT_seq", "NSE"]):
             if ds_name == "mquake":
                 edited_model, weights_copy = apply_algo(
                         model,
@@ -502,7 +502,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--alg_name",
-        choices=["AlphaEdit","MEMIT_rect", "MEMIT_seq","MEMIT_prune", "MEMIT", "ROME", "FT", "MEND","NSE"],
+        choices=["KGMET","MEMIT_rect", "MEMIT_seq","MEMIT_prune", "MEMIT", "ROME", "FT", "MEND","NSE"],
         default="ROME",
         help="Editing algorithm to use. Results are saved in results/<alg_name>/<run_id>, "
         "where a new run_id is generated on each run. "
