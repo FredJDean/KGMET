@@ -537,7 +537,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset_size_limit",
         type=int,
-        default=None,
+        default=2000,
         help="Truncate CounterFact to first n records.",
     )
     parser.add_argument(
@@ -563,7 +563,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--num_edits",
         type=int,
-        default=1,
+        default=100,
         help="Number of rewrites to perform simultaneously.",
     )
     parser.add_argument(
