@@ -1,4 +1,4 @@
-![network](https://github.com/user-attachments/assets/38d2090d-8c64-418a-926d-84cb70d80840)
+![Uploading image.png…]()
 
 # KGMET
 - Code for [``Knowledge Graph-Driven Memory Editing with Directional Interventions``]
