@@ -16,16 +16,16 @@ from .gnn import GNN
 from .build_graph import build_graph_from_triples
 from .compute_ks import compute_ks
 from .compute_z import compute_z, get_module_input_output_at_words, find_fact_lookup_idx
-from .AlphaEdit_hparams import AlphaEditHyperParams
+from .KGMET_hparams import KGMETHyperParams
 # Cache variable(s)
 CONTEXT_TEMPLATES_CACHE = None
 COV_CACHE = {}
 
-def apply_AlphaEdit_to_model(
+def apply_KGMET_to_model(
     model: AutoModelForCausalLM,
     tok: AutoTokenizer,
     requests: List[Dict],
-    hparams: AlphaEditHyperParams,
+    hparams: KGMETHyperParams,
     graph_input: list,
     gnn_model: GNN,
     cache_template: Optional[str] = None,
