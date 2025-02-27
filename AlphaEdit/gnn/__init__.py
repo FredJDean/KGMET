@@ -1,1 +1,0 @@
-from .rrgcn import GNN
