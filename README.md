@@ -1,9 +1,10 @@
-# KGMET
-- Code for [``KGMET``]
+![image](https://github.com/user-attachments/assets/5fec76a4-c58b-4103-8ae3-75a403c08ac7)# KGMET
+- Code for [``Knowledge Graph-Driven Memory Editing with Directional Interventions``]
+- 
+![image](https://github.com/user-attachments/assets/3f4ad5d0-d146-4dd3-88e3-3dd041b65c86)
 
 ## Requirements
 **Our experiment is conducted in a sigle A100.**
-
 - pytorch==1.12.1
 - einops==0.4.0
 - higher==0.2.1
@@ -21,15 +22,14 @@
 ### An example for editing Llama3 (8B) on counterfact dataset using KGMET
 #### 1. Edit Llama3 (8B) model 
  
-    python3 -m experiments.evaluate     --alg_name=KGMET     --model_name=meta-llama/Meta-Llama-3-8B-Instruct     --hparams_fname=Llama3-8B.json --ds_name=mcf   --num_edits=1000 --downstream_eval_steps=5
+    python3 -m experiments.evaluate     --alg_name=KGMET     --model_name=meta-llama/Meta-Llama-3-8B-Instruct     --hparams_fname=Llama3-8B.json --ds_name=mcf  --downstream_eval_steps=5
 
 This command runs an evaluation script for the NSE algorithm using the Llama3-8b-instruct. Below are the explanations for each argument:
 
 - `--alg_name=KGMET`: Specifies the name of the algorithm being used, which is KGMET in this case.
 - `--model_name=meta-llama/Meta-Llama-3-8B-Instruct`: Indicates the name of the model being evaluated, here it is Llama-3-8B-Instruct.
 - `--hparams_fname=Llama3-8B.json`: Points to the JSON file containing hyperparameters specific to the Llama-3-8B-Instruct model.
-- `--ds_name=mcf`: Specifies the dataset name, in this case, "mcf".
-- `--num_edits=1000`: Defines the batch size for each round of editing, meaning 1000 edits will be performed in each batch. 
+- `--ds_name=mcf`: Specifies the dataset name, in this case, "mcf". 
 - `--downstream_eval_steps=5`: indicates that a test of general capabilities is conducted after every 5 rounds of editing.
 #### 2. Summarize the results
 
