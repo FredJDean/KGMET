@@ -38,7 +38,7 @@ The framework of KGMET. KGMET incorporates directional **Knowledge Graph** inter
    `conda create -n KGMET python=3.9`
    `conda activate KGMET`
 #### 3. Install the required dependencies: 
-    pip install -r requirements.txT
+    pip install -r requirements.txt
 #### 4. Edit Llama3 (8B) model 
  
     python3 -m experiments.evaluate     --alg_name=KGMET     --model_name=meta-llama/Meta-Llama-3-8B-Instruct     --hparams_fname=Llama3-8B.json --ds_name=mcf  --downstream_eval_steps=5
