@@ -1,7 +1,9 @@
-# KGMET
 # [``Knowledge Graph-Driven Memory Editing with Directional Interventions``]
 ## Overview
-
+**KGMET is a graph based edited method, taking the advantage of knowledge to edit LLM. (Graph4LLM)**
+- It opens up a whole new direction for solving knowledge editing with Graph Neural Network (GNN).
+- It improves the integration of higher-order information in the model after editing.
+- It effectively blocks extraneous knowledge while ensuring editing effectiveness.
 ### Introduction
 
 Model Editing methods suffer two challenges: (I) **Bad capabilities of multi-hop reasoning**: The editing approaches fails to integrate editing relevant higher-order information. (II) **Model collapse**:  Locate-then edit methods, by altering pretrained parameters, inevitably affect normal knowledge and even face thecata strophic forgetting.
@@ -19,8 +21,15 @@ In this work, we propose *KGMET*. The framework of KGMET is shown as follows.
 KGMET incorporates **Knowledge Graph** guided **Directional Intervention** approach, with magnitude consistency criterion, avoiding *Pattern Collapse* problem, while enabling LLM to effectively improve **multi-hop reasoning** ability in batch editing scenarios. **Orthogonal constraint** is also introduced. With *SVD* and *null-space projection* technologies, it can maximally **block the irrelevant knowledge** . 
 
 ### Main experimental results
-
+#### Experimental results on ZsRE and Multi-CounterFact
 ![image](https://github.com/user-attachments/assets/33d3a8a8-3e9b-42e2-a4c5-2cf2700289ff)
+
+#### Multi-hop experiment in editing task on MQuAKE
+![image](https://github.com/user-attachments/assets/2aefc337-a286-4ea1-8da2-1c264331fb7a)
+
+#### General ability of edited model (SST, MRPC, COLA, RTE, MMLU, NLI)
+![image](https://github.com/user-attachments/assets/6f6c19b4-0a69-431a-87bc-d1190fc06782)
+
 
 ## Requirements
 **Our experiment is conducted in a sigle A100.**
