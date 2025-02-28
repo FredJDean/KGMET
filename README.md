@@ -4,16 +4,22 @@
 
 ### Introduction
 
-Model Editing suffer to challenges: (I) **Bad capabilities of multi-hop reasoning**: The edited model loses its original multi-hop reasoning ability. (II) **Model collapse**:  Locate-then edit methods, by altering pretrained parameters, inevitably affect normal knowledge and even  face thecatastrophic forgetting.
+Model Editing methods suffer to challenges: (I) **Bad capabilities of multi-hop reasoning**: The editing approaches fails to integrate editing relevant higher-order information. (II) **Model collapse**:  Locate-then edit methods, by altering pretrained parameters, inevitably affect normal knowledge and even face thecata strophic forgetting.
+
 ![image](https://github.com/user-attachments/assets/bd3c3b4d-c5b8-4d79-8cef-8d4b77d961e0)
+
 Previous work like rome and glame have two main challenges: **Batch delimma** Updating the weightes of a sigle mlp, which makes the methods ineffective in handing extensive editing requests; **Pattern Collapse** Glame relessly treats the embedding of knowledge as the amount of hidden state changes of LLM, which breaks the principle of magnitude consistency.
 
 ### Method
 
-In this work, we propose KGMET. The frame work of KGMET is shown as follows.
+In this work, we propose *KGMET*. The framework of KGMET is shown as follows.
+
 ![image](https://github.com/user-attachments/assets/3f4ad5d0-d146-4dd3-88e3-3dd041b65c86)
-The framework of KGMET. KGMET incorporates directional **Knowledge Graph** intervention and **Orthogonal constraint**, enabling the model to effectively improve **multi-hop reasoning** in large-scale editing scenarios, with maximally **locked down irrelevant knowledge**.
+
+KGMET incorporates **Knowledge Graph** guided **Directional Intervention** approach, with magnitude consistency criterion, avoiding *Pattern Collapse* problem, while enabling LLM to effectively improve **multi-hop reasoning** ability in batch editing scenarios. **Orthogonal constraint** is also introduced. With *SVD* and *null-space projection* technologies, it can maximally **block the irrelevant knowledge** . 
+
 ### Main experimental results
+
 ![image](https://github.com/user-attachments/assets/33d3a8a8-3e9b-42e2-a4c5-2cf2700289ff)
 
 ## Requirements
