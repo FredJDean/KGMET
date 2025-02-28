@@ -2,7 +2,6 @@ import json
 import os
 from openai import OpenAI
 import openai
-# LLM的关系三元组抽取代码
 # few shot
 examples = (
     "Here are some examples of how to extract subject and relation:\n\n"
@@ -23,14 +22,14 @@ examples = (
     "Answer: (Barack Obama; mother)\n\n"
 )
 client = OpenAI(
-    api_key="sk-4ecdf657ff28487382351bfb952d70ca",
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    api_key="your api key",
+    base_url="your base url",
 )
 #
 # print(completion.model_dump_json())
 
-openai.api_key ="sk-4ecdf657ff28487382351bfb952d70ca"
-openai.base_url= "https://dashscope.aliyuncs.com/compatible-mode/v1"
+#openai.api_key ="your api key"
+#openai.base_url= "your base url"
 
 dataset_path = "./data/zsre_mend_eval.json"
 
@@ -60,7 +59,7 @@ def generate_relationship_for_prompt(data, max_retries=3):
         retries = 0
         while retries < max_retries:
             response = client.chat.completions.create(
-                model="qwen-plus",  # 模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
+                model="qwen-plus",  # you can also call gpt series all deepseek-r1, which may obtain better results.
                 messages=[
                     {'role': 'user', 'content': full_prompt}],
                 max_tokens=100
