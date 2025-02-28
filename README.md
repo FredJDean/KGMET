@@ -46,7 +46,7 @@ KGMET incorporates **Knowledge Graph** guided **Directional Intervention** appro
 - nltk==3.7
 - dgl==1.1.2+cu118
 - dglgo==0.0.2
-## Quick Start
+## ![1740719085607](https://github.com/user-attachments/assets/9c6bfeff-f1ae-4bd7-9b4a-fe41156e4af0) Quick Start
 ### An example for editing Llama3 (8B) on counterfact dataset using KGMET
 #### 1. Clone the repository
 #### 2. Create a virtual environment and activate it:
