@@ -4,7 +4,7 @@
 
 ### Introduction
 
-Model Editing methods suffer to challenges: (I) **Bad capabilities of multi-hop reasoning**: The editing approaches fails to integrate editing relevant higher-order information. (II) **Model collapse**:  Locate-then edit methods, by altering pretrained parameters, inevitably affect normal knowledge and even face thecata strophic forgetting.
+Model Editing methods suffer two challenges: (I) **Bad capabilities of multi-hop reasoning**: The editing approaches fails to integrate editing relevant higher-order information. (II) **Model collapse**:  Locate-then edit methods, by altering pretrained parameters, inevitably affect normal knowledge and even face thecata strophic forgetting.
 
 ![image](https://github.com/user-attachments/assets/bd3c3b4d-c5b8-4d79-8cef-8d4b77d961e0)
 
