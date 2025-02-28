@@ -42,6 +42,7 @@ KGMET incorporates **Knowledge Graph** guided **Directional Intervention** appro
 #### 1. Clone the repository
 #### 2. Create a virtual environment and activate it:
    `conda create -n KGMET python=3.9`
+   
    `conda activate KGMET`
 #### 3. Install the required dependencies: 
     pip install -r requirements.txt
