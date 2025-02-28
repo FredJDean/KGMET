@@ -1,6 +1,6 @@
-# [``Knowledge Graph-Driven Memory Editing with Directional Interventions``]
+# ![1740718445975](https://github.com/user-attachments/assets/6bd128bd-681e-4e93-8bd5-9cb3362de6e4) [``Knowledge Graph-Driven Memory Editing with Directional Interventions``]
 ## Overview
-**KGMET is a graph based edited method, taking the advantage of knowledge graph to edit LLM. (Graph4LLM)**
+**![1740718585551](https://github.com/user-attachments/assets/24dac3ae-849f-47fd-ad86-da9b4af951bc) KGMET is a graph based edited method, taking the advantage of knowledge graph to edit LLM. (Graph4LLM)**
 - It opens up a whole new direction for solving knowledge editing with Graph Neural Network (GNN).
 - It improves the integration of higher-order information in the model after editing.
 - It effectively blocks extraneous knowledge while ensuring editing effectiveness.
