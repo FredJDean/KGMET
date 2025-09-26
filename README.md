@@ -71,4 +71,4 @@ This command runs an evaluation script for the KGMET algorithm using the Llama3-
     python summarize.py --dir_name=KGMET --runs=run_<run1>,run_<run2>
 
 ## Acknowledgment
-Our code is based on  [``MEMIT``](https://github.com/kmeng01/memit.git).
+Our code is based on  [``AlphaEdit``](https://github.com/jianghoucheng/AlphaEdit) and [``GLAME``](https://github.com/Acruxos/GLAME).
